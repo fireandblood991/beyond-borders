@@ -87,9 +87,9 @@ export default function App() {
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-brand-cream/30"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-brand-purple"
         >
-          <ArrowDown size={32} />
+          <ArrowDown size={40} strokeWidth={2.5} />
         </motion.div>
       </section>
 
@@ -106,18 +106,13 @@ export default function App() {
               <p>
                 Il nostro obiettivo è trasformare lo spazio pubblico in un forum di discussione politica attraverso la bellezza e la provocazione. Vogliamo che ogni installazione, ogni performance e ogni nota musicale sia un mattone rimosso dai muri che ci dividono.
               </p>
-              <div className="pt-6">
-                <button className="bg-brand-purple text-brand-cream px-8 py-4 font-heading font-bold uppercase tracking-widest hover:bg-brand-red transition-colors">
-                  Leggi il Manifesto
-                </button>
-              </div>
             </div>
             <div className="relative aspect-square">
               <div className="absolute inset-0 border-2 border-brand-purple/30 translate-x-4 translate-y-4" />
               <img 
-                src="https://picsum.photos/seed/political-art/800/800" 
-                alt="Political Art" 
-                className="w-full h-full object-cover grayscale contrast-125 brightness-75"
+                src="https://i.pinimg.com/736x/cb/84/58/cb8458c46b1c00985d38952d85ec160c.jpg" 
+                alt="STOP START Sign" 
+                className="w-full h-full object-cover grayscale contrast-125"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute bottom-0 left-0 bg-brand-purple p-6 -translate-x-4 translate-y-4">
@@ -181,6 +176,181 @@ export default function App() {
         </div>
       </section>
 
+      {/* ARTISTS & ORGANIZERS SECTION */}
+      <section className="px-6 md:px-12 lg:px-24 py-24 border-t border-brand-cream/10">
+        <div className="max-w-6xl mx-auto">
+          <SectionTitle subtitle="Creators & Architects">Artisti e Organizzatori</SectionTitle>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {[
+              { name: "Dahlia LeBlanc-Wright", role: "MUSICIAN & PRESENTER", image: "https://i.postimg.cc/gkhRWt97/b53979d23283dc39481b90331bc5dc14.jpg" },
+              { name: "Riley Campbell", role: "BALLET DANCER", image: "https://i.pinimg.com/736x/a8/0a/a9/a80aa92a6ff0f9983512509d2171b3c8.jpg" },
+              { name: "Neil Flanagan", role: "ACTOR & PERFORMER", image: "https://i.pinimg.com/1200x/4a/09/78/4a0978995979110a3143040022eb36b3.jpg" },
+              { name: "Bodhi Norwood", role: "MUSICIAN", image: "https://i.pinimg.com/1200x/4d/83/d0/4d83d0cafb1253701298b0f1f323855b.jpg" },
+              { name: "Sloane Dunne", role: "ACTRESS & PERFORMER", image: "https://i.pinimg.com/736x/0a/d7/2f/0ad72f966d003701dd207193cd404abe.jpg" },
+              { name: "Diego Delgado", role: "JOURNALIST & MODERATOR", image: "https://i.pinimg.com/736x/ae/67/b5/ae67b5f19382831eb036d17261233b2a.jpg" },
+              { name: "Deion Kendrick", role: "ORGANIZER & MODERATOR", image: "https://i.pinimg.com/736x/dc/b4/03/dcb403e16a0d7abee6846d6904e50565.jpg" }
+            ].map((student, index) => (
+              <motion.div 
+                key={student.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="relative aspect-square mb-4 overflow-hidden">
+                  <div className="absolute inset-0 border border-brand-purple/20 translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
+                  <img 
+                    src={student.image || `https://picsum.photos/seed/${student.name.replace(/\s/g, '')}/400/400`} 
+                    alt={student.name} 
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <h4 className="font-display text-lg text-brand-purple uppercase mb-1 leading-tight">{student.name}</h4>
+                <p className="font-heading text-brand-cream/40 uppercase tracking-widest text-[10px]">{student.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SPECIAL GUESTS SECTION */}
+      <section className="px-6 md:px-12 lg:px-24 py-24 bg-white/[0.02]">
+        <div className="max-w-6xl mx-auto">
+          <SectionTitle subtitle="Special Guests">Ospiti Speciali</SectionTitle>
+          
+          <div className="space-y-24">
+            {/* Musical Guest */}
+            <div className="grid grid-cols-1 md:grid-cols-[0.6fr_1.4fr] gap-12 items-center">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative aspect-[3/4] overflow-hidden group"
+              >
+                <div className="absolute inset-0 border-2 border-brand-purple/30 translate-x-4 translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
+                <img 
+                  src="https://i.pinimg.com/736x/48/6f/e8/486fe80ac48bede2bc12b2cf0717090f.jpg" 
+                  alt="Marie Claire LeBlanc" 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  referrerPolicy="no-referrer"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className="text-brand-purple font-heading text-sm uppercase tracking-[0.3em] mb-4 block">Musical Performance</span>
+                <h3 className="font-display text-4xl text-white uppercase mb-4">Marie Claire LeBlanc</h3>
+                <p className="font-heading text-brand-cream/60 uppercase tracking-widest text-xs mb-6">Singer and Performer • New Orleans</p>
+                <p className="text-brand-cream/80 leading-relaxed text-lg">
+                  Originaria di New Orleans, Marie Claire LeBlanc è una cantautrice jazz e blues nota per il timbro caldo e profondo della sua voce e per la forte presenza scenica. Discendente di una famiglia creola della Louisiana, la sua musica affonda le radici nelle tradizioni culturali del Sud degli Stati Uniti, intrecciando spiritualità, memoria e identità.
+                  <br /><br />
+                  Artista affermata e interprete sensibile delle tensioni e delle bellezze del proprio tempo, porterà a Beyond Borders una performance capace di trasformare il palco in uno spazio di racconto, emozione e connessione.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Political Debate Panel */}
+            <div className="pt-24 border-t border-brand-cream/10">
+              <div className="text-center mb-16">
+                <span className="text-brand-purple font-heading text-sm uppercase tracking-[0.3em] mb-4 block">The Final Night Event</span>
+                <h3 className="font-display text-5xl text-white uppercase mb-6">Il Panel Politico</h3>
+                <p className="text-brand-cream/60 max-w-2xl mx-auto italic">
+                  Un panel esclusivo moderato da tre giovani talenti della comunità, dove i candidati risponderanno alle domande sul futuro di Greenwood Bay.
+                </p>
+              </div>
+
+              <div className="mb-16">
+                <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16">
+                  {[
+                    { name: "Dahlia LeBlanc-Wright", role: "MUSICIAN & PRESENTER", image: "https://i.postimg.cc/gkhRWt97/b53979d23283dc39481b90331bc5dc14.jpg" },
+                    { name: "Diego Delgado", role: "JOURNALIST & MODERATOR", image: "https://i.pinimg.com/736x/ae/67/b5/ae67b5f19382831eb036d17261233b2a.jpg" },
+                    { name: "Deion Kendrick", role: "ORGANIZER & MODERATOR", image: "https://i.pinimg.com/736x/dc/b4/03/dcb403e16a0d7abee6846d6904e50565.jpg" }
+                  ].map((moderator, index) => (
+                    <motion.div 
+                      key={moderator.name}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center gap-4 group"
+                    >
+                      <div className="w-16 h-16 rounded-full overflow-hidden border border-brand-purple/30 group-hover:border-brand-purple transition-colors duration-500">
+                        <img 
+                          src={moderator.image || `https://picsum.photos/seed/${moderator.name.replace(/\s/g, '')}/100/100`} 
+                          alt={moderator.name} 
+                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                      <div>
+                        <h5 className="font-display text-lg text-white uppercase leading-tight">{moderator.name}</h5>
+                        <p className="font-heading text-brand-purple uppercase tracking-widest text-[9px]">{moderator.role}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                {/* Gabrielle */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="group"
+                >
+                  <div className="relative aspect-[3/4] mb-8 overflow-hidden">
+                    <div className="absolute inset-0 border-2 border-brand-purple/30 translate-x-3 translate-y-3 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
+                    <img 
+                      src="https://i.postimg.cc/hG1HhRwH/CCH-Pounder.jpg" 
+                      alt="Gabrielle Davis" 
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-4 left-4 bg-brand-purple px-3 py-1 text-[10px] font-heading uppercase tracking-widest text-white">Democrat Candidate</div>
+                  </div>
+                  <h4 className="font-display text-3xl text-brand-purple uppercase mb-2">Gabrielle Davis</h4>
+                  <p className="font-heading text-brand-cream/60 uppercase tracking-widest text-xs mb-4">Underwood Academy Principal • Greenwood Bay</p>
+                  <p className="text-brand-cream/80 leading-relaxed text-sm">
+                    Nata e cresciuta a Greenwood Bay, Gabrielle Davis guida la Underwood Academy dal 2018, portando avanti una visione educativa fondata su responsabilità, crescita e seconde possibilità. Oggi si presenta come candidata democratica alla carica di sindaca, proponendo una visione della città orientata all’educazione e alla responsabilità civica.
+                  </p>
+                </motion.div>
+
+                {/* Colton */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="group"
+                >
+                  <div className="relative aspect-[3/4] mb-8 overflow-hidden">
+                    <div className="absolute inset-0 border-2 border-brand-purple/30 translate-x-3 translate-y-3 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
+                    <img 
+                      src="https://i.pinimg.com/1200x/7d/da/63/7dda6338e055e911d6f3c12448df0194.jpg" 
+                      alt="Colton Ward" 
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-4 right-4 bg-red-900 px-3 py-1 text-[10px] font-heading uppercase tracking-widest text-white">Republican Candidate</div>
+                  </div>
+                  <h4 className="font-display text-3xl text-brand-purple uppercase mb-2">Colton Ward</h4>
+                  <p className="font-heading text-brand-cream/60 uppercase tracking-widest text-xs mb-4">Major in office • Greenwood Bay</p>
+                  <p className="text-brand-cream/80 leading-relaxed text-sm">
+                    Originario di Greenwood Bay, Colton Ward è sindaco della città dal 2022. Sostenitore di una visione politica conservatrice e fortemente patriottica, si ripropone per un nuovo mandato con il sostegno dell’elettorato repubblicano, puntando sulla sua esperienza e carisma pubblico.
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="px-6 md:px-12 lg:px-24 py-12 border-t border-brand-cream/10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
@@ -192,10 +362,6 @@ export default function App() {
             <span>#BeyondBorders</span>
             <span>#ArtUnites</span>
             <span>#CreativeResistance</span>
-          </div>
-
-          <div className="text-brand-cream/40 text-xs uppercase tracking-widest">
-            © 2026 Artistic Revolution Committee
           </div>
         </div>
       </footer>
