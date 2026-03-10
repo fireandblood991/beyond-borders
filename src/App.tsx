@@ -17,13 +17,16 @@ const SectionTitle = ({ children, subtitle }: { children: React.ReactNode; subti
   </div>
 );
 
-const ContentBlock = ({ title, icon: Icon, children }: { title: string; icon: React.ElementType; children: React.ReactNode }) => (
+const ContentBlock = ({ title, icon: Icon, image, children }: { title: string; icon: React.ElementType; image: string; children: React.ReactNode }) => (
   <motion.div 
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     className="p-8 block-border bg-white/5 hover:bg-white/10 transition-colors group"
   >
+    <div className="relative aspect-video mb-6 overflow-hidden">
+        <img src={image} alt={title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+    </div>
     <div className="flex items-center gap-4 mb-6">
       <div className="p-3 bg-brand-purple text-brand-cream rounded-sm group-hover:scale-110 transition-transform">
         <Icon size={24} />
@@ -129,47 +132,47 @@ export default function App() {
           <SectionTitle subtitle="Festival Layout">Gli Spazi del Festival</SectionTitle>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ContentBlock title="Exhibition Hall" icon={Palette}>
+            <ContentBlock title="LIVE STAGE" icon={Mic2} image="https://i.postimg.cc/hGsr9JvB/image.png">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Il cuore pulsante del festival. Un palco multidisciplinare dove musica, teatro, danza e poesia si incontrano per rompere ogni barriera.
               </p>
               <ul className="list-disc list-inside text-brand-purple font-heading font-bold text-sm uppercase tracking-tighter">
-                <li>Installazioni Immersive</li>
-                <li>Galleria d'Arte Contemporanea</li>
-                <li>Digital Art Showcase</li>
+                <li>Concerti Live</li>
+                <li>Performance di Danza</li>
+                <li>Prove Attoriali e Poesia</li>
               </ul>
             </ContentBlock>
 
-            <ContentBlock title="Live Stage" icon={Mic2}>
+            <ContentBlock title="RELAX ZONE" icon={Users} image="https://i.postimg.cc/7L7SP58y/Gemini-Generated-Image-vel0t8vel0t8vel0.png">
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Un'oasi di pace offerta dai nostri sponsor. Uno spazio dedicato al riposo, alla riflessione e al rinfresco tra un evento e l'altro.
               </p>
               <ul className="list-disc list-inside text-brand-purple font-heading font-bold text-sm uppercase tracking-tighter">
-                <li>Concerti Internazionali</li>
-                <li>Performance di Spoken Word</li>
-                <li>Teatro Sperimentale</li>
+                <li>Area Lounge</li>
+                <li>Rinfresco e Drink</li>
+                <li>Connessione Umana</li>
               </ul>
             </ContentBlock>
 
-            <ContentBlock title="Workshop Area" icon={Users}>
+            <ContentBlock title="AUDIENCE" icon={MessageSquare} image="https://i.postimg.cc/Y2QCCQsv/unnamed-(1).jpg">
               <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              </p>
-              <ul className="list-disc list-inside text-brand-purple font-heading font-bold text-sm uppercase tracking-tighter">
-                <li>Laboratori di Serigrafia</li>
-                <li>Masterclass di Street Art</li>
-                <li>Creative Coding</li>
-              </ul>
-            </ContentBlock>
-
-            <ContentBlock title="Political Forum" icon={MessageSquare}>
-              <p>
-                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+                Non solo spettatori, ma protagonisti. L'area dedicata al confronto, dove le idee si incontrano e il dibattito diventa azione.
               </p>
               <ul className="list-disc list-inside text-brand-purple font-heading font-bold text-sm uppercase tracking-tighter">
                 <li>Dibattiti Aperti</li>
                 <li>Incontri con Attivisti</li>
-                <li>Proiezioni di Documentari</li>
+                <li>Forum Politico</li>
+              </ul>
+            </ContentBlock>
+
+            <ContentBlock title="VISUAL CANVAS" icon={Palette} image="https://i.postimg.cc/bvNjpt2C/Gemini-Generated-Image-cbr88zcbr88zcbr8.png">
+              <p>
+                Una tela collettiva dove ognuno può imprimere speranze, pensieri e riflessioni. Un'opera concreta che continuerà a vivere anche dopo la fine del festival.
+              </p>
+              <ul className="list-disc list-inside text-brand-purple font-heading font-bold text-sm uppercase tracking-tighter">
+                <li>Tela Collettiva</li>
+                <li>Espressione Libera</li>
+                <li>Eredità Artistica</li>
               </ul>
             </ContentBlock>
           </div>
@@ -180,6 +183,11 @@ export default function App() {
       <section className="px-6 md:px-12 lg:px-24 py-24 border-t border-brand-cream/10">
         <div className="max-w-6xl mx-auto">
           <SectionTitle subtitle="Creators & Architects">Artisti e Organizzatori</SectionTitle>
+          
+          <div className="flex items-center gap-4 mb-12">
+            <img src="https://i.imgur.com/L3xR49W.png" alt="Sigma Phi Epsilon" className="w-16 h-16 object-contain" referrerPolicy="no-referrer" />
+            <p className="text-brand-cream/60 uppercase tracking-widest text-sm">Proud members of <span className="text-brand-purple font-bold">Sigma Phi Epsilon</span></p>
+          </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {[
@@ -347,6 +355,20 @@ export default function App() {
                 </motion.div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SPONSOR SECTION */}
+      <section className="px-6 md:px-12 lg:px-24 py-24">
+        <div className="max-w-6xl mx-auto">
+          <SectionTitle subtitle="Our Partners">Sponsor</SectionTitle>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {["Country Club", "Gator Grill", "Prisma Vintage", "Tiki Bar"].map((sponsor) => (
+              <div key={sponsor} className="p-6 border border-brand-cream/10 flex items-center justify-center font-display text-xl text-brand-cream/60 uppercase hover:text-brand-purple transition-colors">
+                {sponsor}
+              </div>
+            ))}
           </div>
         </div>
       </section>
